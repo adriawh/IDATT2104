@@ -1,70 +1,56 @@
 #include <iostream>
 #include <thread>
-#include <functional>
 #include <list> 
-#include <vector> 
-#include <mutex>
+#include <vector>
 
 using namespace std;
 
-int main(){
+bool isPrime(int n){
+    if (n == 0 || n == 1) return false;
 
-    {
-
+    for (int i = 2; i <= n / 2; ++i){
+        if (n % i == 0) return false;
     }
 
-
+    return true;
 }
 
+int main(){
 
-class PrimeFinder{
-
-    int start;
-    int end;
-    int numberOfThreads;
+    int start = 0;
+    int end = 100;
+    int numberOfThreads = 10;
     vector<thread> threads;
     list<int> primes;
-    mutex primeFond_mutex;
+    mutex primeFoundMutex;
 
-    public:
-        PrimeFinder(int start, int end, int numberOfThreads){
-            this->start = start;
-            this->end = end;
-            this->numberOfThreads = numberOfThreads;
-        }
-        
-    list<int> findPrimes(int start, int end, int numberOfThreads){
+    int blockSize = (end-start)/numberOfThreads;
 
-    for(int i = 0; i<numberOfThreads; i++){
+    int currentIndex;
 
-      
-    }
-            
-   
+    for(int i = 0; i < numberOfThreads; i++){
 
+        threads.emplace_back([i, &start, &primes, &primeFoundMutex, &blockSize, &currentIndex, &end] {
 
+            for(int j = start + i*blockSize; j < start + (i+1) * blockSize; j++){
 
-        
-        for(int i = start; i<end; i++){
-            if(isPrime(i)) primes.insert(primes.end(), 1, i);
-        }
-
-        primes.sort();
-
-        return primes;
-
-    }
-    
-    
-    bool isPrime(int n){
-        if (n == 0 || n == 1) return false;
-            
-        for (int i = 2; i <= n / 2; ++i){
-            if (n % i == 0) return false;
-        }
-    
-        return true;
+                if(isPrime(j)){
+                    primeFoundMutex.lock();
+                    primes.push_back(j);
+                    primeFoundMutex.unlock();
+                }
+            }
+        });
     }
 
+    for(int i = 0; i<threads.size(); i++){
+        threads[i].join();
+    }
 
-};
+    primes.sort();
+
+    for(auto i : primes){
+       std:: cout << i  << ' ';
+    }
+}
+
