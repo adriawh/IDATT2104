@@ -11,7 +11,6 @@ bool isPrime(int n){
     for (int i = 2; i <= n / 2; ++i){
         if (n % i == 0) return false;
     }
-
     return true;
 }
 
@@ -19,18 +18,16 @@ int main(){
 
     int start = 0;
     int end = 100;
-    int numberOfThreads = 10;
+    int numberOfThreads = 5;
     vector<thread> threads;
     list<int> primes;
     mutex primeFoundMutex;
 
     int blockSize = (end-start)/numberOfThreads;
 
-    int currentIndex;
-
     for(int i = 0; i < numberOfThreads; i++){
 
-        threads.emplace_back([i, &start, &primes, &primeFoundMutex, &blockSize, &currentIndex, &end] {
+        threads.emplace_back([i, &start, &primes, &primeFoundMutex, &blockSize] {
 
             for(int j = start + i*blockSize; j < start + (i+1) * blockSize; j++){
 
@@ -50,7 +47,6 @@ int main(){
     primes.sort();
 
     for(auto i : primes){
-       std:: cout << i  << ' ';
+       cout << i  << ' ';
     }
 }
-
