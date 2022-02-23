@@ -1,1 +1,0 @@
-CMakeLists.txt not found in /Users/adrianhakvag/Documents/4.semester/Nettverksprogrammering/Obligatoriske øvinger/IDATT2104-Nettverksprogrammering/cpp/cpp Select CMakeLists.txt

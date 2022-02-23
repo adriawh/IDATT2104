@@ -1,3 +1,0 @@
-/Users/adrianhakvag/Documents/4.semester/Nettverksprogrammering/Obligatoriske øvinger/IDATT2104-Nettverksprogrammering/cpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/adrianhakvag/Documents/4.semester/Nettverksprogrammering/Obligatoriske øvinger/IDATT2104-Nettverksprogrammering/cpp/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/adrianhakvag/Documents/4.semester/Nettverksprogrammering/Obligatoriske øvinger/IDATT2104-Nettverksprogrammering/cpp/cmake-build-debug/CMakeFiles/IDATT2104_Nettverksprogrammering.dir
