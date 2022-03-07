@@ -1,8 +1,0 @@
-cmake_minimum_required(VERSION 3.21)
-project(cpp)
-
-set(CMAKE_CXX_STANDARD 14)
-
-add_executable(IDATT2104_Nettverksprogrammering
-        P2/Main.cpp)
-
